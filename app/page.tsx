@@ -1,103 +1,94 @@
 import Image from "next/image";
+import { WiDayCloudy, WiRain, WiDaySunny, WiCloudy } from "react-icons/wi";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div 
+      className="min-h-screen w-full text-white relative overflow-hidden"
+    >
+      {/* Background Image with Overlay */}
+      <Image
+        src="https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?q=80&w=1935&auto=format&fit=crop"
+        alt="Rainy window background"
+        fill
+        className="object-cover"
+        priority
+      />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Logo */}
+        <div className="max-w-7xl mx-auto p-4">
+          <p className="text-white/80 text-sm mb-8">weather.com</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 p-4">
+          {/* Left Section - Main Temperature */}
+          <div className="space-y-2 flex flex-col justify-end">
+            <div className="flex items-center gap-4">
+              <span className="text-8xl font-light tracking-tighter">23°C</span>
+              <WiRain className="text-6xl text-white/90" />
+            </div>
+            <h1 className="text-3xl font-medium">Watermelon Park</h1>
+            <p className="text-white/80 text-sm">10:43 | H:32° L:18°</p>
+          </div>
+
+          {/* Right Section - Forecasts */}
+          <div className="space-y-6">
+            {/* Hourly Forecast Card */}
+            <div className="bg-black/30 backdrop-blur-lg rounded-xl p-6 border border-white/5 shadow-2xl">
+              <p className="text-sm mb-6">Thunderstorms expected around 00:00</p>
+              <div className="grid grid-cols-5 gap-6 text-center">
+                {[
+                  { time: "Now", temp: "23°", icon: <WiRain className="text-3xl mx-auto" /> },
+                  { time: "00", temp: "21°", icon: <WiRain className="text-3xl mx-auto" /> },
+                  { time: "01", temp: "20°", icon: <WiRain className="text-3xl mx-auto" /> },
+                  { time: "02", temp: "20°", icon: <WiRain className="text-3xl mx-auto" /> },
+                  { time: "03", temp: "23°", icon: <WiRain className="text-3xl mx-auto" /> },
+                ].map((hour) => (
+                  <div key={hour.time} className="space-y-2">
+                    <p className="text-sm">{hour.time}</p>
+                    {hour.icon}
+                    <p className="text-sm">{hour.temp}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 5-Day Forecast Card */}
+            <div className="bg-black/30 backdrop-blur-lg rounded-xl p-6 border border-white/5 shadow-2xl">
+              <p className="text-sm mb-6">5-Day Forecast</p>
+              <div className="space-y-6">
+                {[
+                  { day: "Today", icon: <WiRain className="text-2xl" />, low: "18°", high: "32°", progress: "75%" },
+                  { day: "Thu", icon: <WiRain className="text-2xl" />, low: "20°", high: "29°", progress: "60%" },
+                  { day: "Fri", icon: <WiCloudy className="text-2xl" />, low: "23°", high: "31°", progress: "70%" },
+                  { day: "Sat", icon: <WiDayCloudy className="text-2xl" />, low: "22°", high: "29°", progress: "60%" },
+                  { day: "Sun", icon: <WiDayCloudy className="text-2xl" />, low: "23°", high: "33°", progress: "80%" },
+                ].map((day) => (
+                  <div key={day.day} className="grid grid-cols-[1fr_40px_1fr] items-center gap-4">
+                    <div className="flex items-center gap-2">
+                      <span className="w-12">{day.day}</span>
+                      {day.icon}
+                    </div>
+                    <span className="text-white/60 text-right">{day.low}</span>
+                    <div className="flex items-center gap-4">
+                      <div className="w-full bg-white/20 rounded-full h-1">
+                        <div 
+                          className="bg-[#3498db] h-full rounded-full" 
+                          style={{ width: day.progress }}
+                        />
+                      </div>
+                      <span>{day.high}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
